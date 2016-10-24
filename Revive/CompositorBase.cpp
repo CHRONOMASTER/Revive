@@ -132,8 +132,10 @@ vr::EVRCompositorError CompositorBase::SubmitFrame(const ovrViewScaleDesc* viewS
 
 	m_SceneLayer = nullptr;
 
+	vr::VRCompositor()->PostPresentHandoff();
+
 	// Call WaitGetPoses() to actually display the frame.
-	return vr::VRCompositor()->WaitGetPoses(nullptr, 0, nullptr, 0);
+	return vr::VRCompositorError_None;
 }
 
 vr::VROverlayHandle_t CompositorBase::CreateOverlay()
